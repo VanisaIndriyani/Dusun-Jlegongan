@@ -84,12 +84,7 @@
             </button>
         </form>
 
-        <div class="mt-4 pt-3 border-top text-center">
-            <small class="text-muted">
-                <i class="bi bi-info-circle me-1"></i>
-                Default: admin@dusunjlegongan.id / admin123
-            </small>
-        </div>
+      
     </div>
 </body>
 </html>
