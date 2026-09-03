@@ -1419,7 +1419,7 @@
 
         <style>
             /* =====================================================
-               JADWAL HOMEPAGE
+               JADWAL HOMEPAGE — STYLE KONSISTEN DENGAN /jadwal
             ===================================================== */
 
             .jadwal-home {
@@ -1465,8 +1465,8 @@
 
             .jadwal-home .schedule-grid {
                 display: grid;
-                grid-template-columns: repeat(4, minmax(0, 1fr));
-                gap: 20px;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 26px;
             }
 
 
@@ -1478,50 +1478,171 @@
                 position: relative;
                 overflow: hidden;
 
+                display: flex;
+                flex-direction: column;
+
                 min-width: 0;
 
                 background: #fff;
-                border: 1px solid #e7edef;
+                border: 1px solid rgba(226,232,240,.75);
                 border-radius: 20px;
 
-                box-shadow: 0 8px 25px rgba(15,23,42,.05);
+                box-shadow: 0 10px 30px rgba(15,23,42,.06);
 
                 transition:
-                    transform .3s ease,
-                    box-shadow .3s ease,
-                    border-color .3s ease;
+                    transform .38s cubic-bezier(.4,0,.2,1),
+                    box-shadow .38s cubic-bezier(.4,0,.2,1),
+                    border-color .25s ease;
+
+                isolation: isolate;
+            }
+
+            .jadwal-home .sch-card::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                border-radius: inherit;
+
+                padding: 1.2px;
+
+                background:
+                    linear-gradient(
+                        135deg,
+                        var(--sch-grad-a,#10b981),
+                        var(--sch-grad-b,#3b82f6) 55%,
+                        var(--sch-grad-c,#ec4899)
+                    );
+
+                -webkit-mask:
+                    linear-gradient(#fff 0 0) content-box,
+                    linear-gradient(#fff 0 0);
+                -webkit-mask-composite: xor;
+                mask-composite: exclude;
+
+                pointer-events: none;
+                opacity: 0;
+                transition: opacity .35s ease;
+                z-index: 4;
+            }
+
+            .jadwal-home .sch-card:hover::before {
+                opacity: 1;
             }
 
             .jadwal-home .sch-card:hover {
                 transform: translateY(-6px);
-                border-color: #c7eadb;
-                box-shadow: 0 18px 38px rgba(15,23,42,.09);
+                border-color: transparent;
+                box-shadow: 0 22px 50px rgba(15,23,42,.13);
             }
 
 
             /* =====================================================
-               HEADER
+               WARNA PER HARI
             ===================================================== */
 
-            .jadwal-home .sch-head {
-                padding: 18px 18px 14px;
+            .jadwal-home .sch-card[data-day="Senin"] {
+                --sch-grad-a:#10b981; --sch-grad-b:#14b8a6; --sch-grad-c:#06b6d4;
+                --sch-chip-bg: rgba(16,185,129,.18); --sch-chip-color:#047857; --sch-accent:#10b981;
+            }
+            .jadwal-home .sch-card[data-day="Selasa"] {
+                --sch-grad-a:#f59e0b; --sch-grad-b:#f97316; --sch-grad-c:#ef4444;
+                --sch-chip-bg: rgba(245,158,11,.18); --sch-chip-color:#b45309; --sch-accent:#f59e0b;
+            }
+            .jadwal-home .sch-card[data-day="Rabu"] {
+                --sch-grad-a:#3b82f6; --sch-grad-b:#6366f1; --sch-grad-c:#8b5cf6;
+                --sch-chip-bg: rgba(59,130,246,.18); --sch-chip-color:#1d4ed8; --sch-accent:#3b82f6;
+            }
+            .jadwal-home .sch-card[data-day="Kamis"] {
+                --sch-grad-a:#ec4899; --sch-grad-b:#db2777; --sch-grad-c:#f472b6;
+                --sch-chip-bg: rgba(236,72,153,.17); --sch-chip-color:#be185d; --sch-accent:#ec4899;
+            }
+            .jadwal-home .sch-card[data-day="Jumat"] {
+                --sch-grad-a:#ef4444; --sch-grad-b:#f87171; --sch-grad-c:#fb7185;
+                --sch-chip-bg: rgba(239,68,68,.17); --sch-chip-color:#b91c1c; --sch-accent:#ef4444;
+            }
+            .jadwal-home .sch-card[data-day="Sabtu"] {
+                --sch-grad-a:#0ea5e9; --sch-grad-b:#06b6d4; --sch-grad-c:#14b8a6;
+                --sch-chip-bg: rgba(14,165,233,.17); --sch-chip-color:#0369a1; --sch-accent:#0ea5e9;
+            }
+            .jadwal-home .sch-card[data-day="Minggu"] {
+                --sch-grad-a:#8b5cf6; --sch-grad-b:#a855f7; --sch-grad-c:#d946ef;
+                --sch-chip-bg: rgba(139,92,246,.17); --sch-chip-color:#6d28d9; --sch-accent:#8b5cf6;
+            }
+            .jadwal-home .sch-card[data-day*="-"] {
+                --sch-grad-a:#059669; --sch-grad-b:#0891b2; --sch-grad-c:#7c3aed;
+                --sch-chip-bg: rgba(5,150,105,.16); --sch-chip-color:#065f46; --sch-accent:#059669;
             }
 
-            .jadwal-home .sch-day {
+
+            /* =====================================================
+               FOTO — FULL COVER ATAS (SELALU 180px)
+            ===================================================== */
+
+            .jadwal-home .sch-img {
+                position: relative;
+
+                width: 100% !important;
+                height: 180px !important;
+                max-height: 180px !important;
+                min-height: 180px !important;
+
+                overflow: hidden;
+
+                background:
+                    linear-gradient(
+                        135deg,
+                        rgba(167,243,208,.55),
+                        rgba(16,185,129,.35)
+                    );
+            }
+
+            .jadwal-home .sch-img img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+
+                transition: transform .5s cubic-bezier(.4,0,.2,1);
+            }
+
+            .jadwal-home .sch-card:hover .sch-img img {
+                transform: scale(1.06);
+            }
+
+            .jadwal-home .chip-day-glass {
+                position: absolute;
+                top: 14px;
+                left: 14px;
+                z-index: 3;
+
                 display: inline-flex;
                 align-items: center;
-                justify-content: center;
+                gap: 5px;
 
-                margin-bottom: 9px;
-                padding: 6px 10px;
+                padding: 6px 11px;
 
                 border-radius: 50px;
 
-                background: #ecfdf5;
-                color: #047857;
+                background: rgba(255,255,255,.88);
+                backdrop-filter: blur(6px);
+                -webkit-backdrop-filter: blur(6px);
 
-                font-size: .67rem;
+                color: #0f172a;
+
+                font-size: .68rem;
                 font-weight: 800;
+
+                box-shadow: 0 3px 10px rgba(15,23,42,.12);
+                border: 1px solid rgba(255,255,255,.7);
+            }
+
+
+            /* =====================================================
+               HEADER (NAMA KEGIATAN)
+            ===================================================== */
+
+            .jadwal-home .sch-head {
+                padding: 18px 20px 8px;
             }
 
             .jadwal-home .sch-name {
@@ -1529,97 +1650,61 @@
 
                 color: #0f172a;
 
-                font-size: .98rem;
+                font-size: 1.02rem;
                 line-height: 1.4;
-
                 font-weight: 750;
             }
 
 
             /* =====================================================
-               IMAGE
-            ===================================================== */
-
-            .jadwal-home .sch-img {
-                width: calc(100% - 28px);
-                height: 145px;
-
-                margin: 0 14px 15px;
-
-                overflow: hidden;
-                border-radius: 15px;
-
-                background: #ecfdf5;
-            }
-
-            .jadwal-home .sch-img img {
-                width: 100%;
-                height: 100%;
-
-                display: block;
-
-                object-fit: cover;
-
-                transition: transform .5s ease;
-            }
-
-            .jadwal-home .sch-card:hover .sch-img img {
-                transform: scale(1.06);
-            }
-
-
-            /* =====================================================
-               BODY
+               BODY (INFO & DESKRIPSI)
             ===================================================== */
 
             .jadwal-home .sch-body {
-                padding: 0 18px 18px;
+                padding: 0 20px 20px;
             }
 
-            .jadwal-home .time-chip {
+            .jadwal-home .sch-info-row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                margin-bottom: 12px;
+            }
+
+            .jadwal-home .sch-info-chip {
                 display: inline-flex;
                 align-items: center;
                 gap: 6px;
 
-                padding: 7px 10px;
+                padding: 7px 11px;
 
                 border-radius: 50px;
 
-                background: #f0fdf4;
-                color: #15803d;
+                background: var(--sch-chip-bg, #ecfdf5);
+                color: var(--sch-chip-color, #047857);
 
-                font-size: .7rem;
+                font-size: .72rem;
                 font-weight: 750;
+
+                line-height: 1;
             }
 
-            .jadwal-home .time-chip i {
-                font-size: .65rem;
+            .jadwal-home .sch-info-chip i {
+                font-size: .7rem;
             }
 
             .jadwal-home .sch-desc {
                 color: #64748b;
 
-                font-size: .76rem;
-                line-height: 1.65;
+                font-size: .78rem;
+                line-height: 1.7;
 
                 display: -webkit-box;
-                -webkit-line-clamp: 2;
+                -webkit-line-clamp: 3;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
-            }
 
-
-            /* =====================================================
-               CARD TANPA FOTO
-            ===================================================== */
-
-            .jadwal-home .sch-card:not(:has(.sch-img)) {
-                background:
-                    linear-gradient(
-                        145deg,
-                        #ffffff,
-                        #f8fffc
-                    );
+                margin: 0;
             }
 
 
@@ -1628,7 +1713,7 @@
             ===================================================== */
 
             .jadwal-home .jadwal-home-button {
-                margin-top: 38px;
+                margin-top: 42px;
             }
 
 
@@ -1637,50 +1722,43 @@
             ===================================================== */
 
             @media (max-width: 1199px) {
-
                 .jadwal-home .schedule-grid {
                     grid-template-columns: repeat(2, minmax(0, 1fr));
                 }
-
                 .jadwal-home .sch-img {
-                    height: 170px;
+                    height: 190px !important;
+                    max-height: 190px !important;
+                    min-height: 190px !important;
                 }
-
             }
-
 
             @media (max-width: 767px) {
-
                 .jadwal-home .schedule-grid {
                     grid-template-columns: 1fr;
-                    gap: 17px;
+                    gap: 20px;
                 }
-
                 .jadwal-home .sch-img {
-                    height: 190px;
+                    height: 200px !important;
+                    max-height: 200px !important;
+                    min-height: 200px !important;
                 }
-
                 .jadwal-home .sch-head {
-                    padding: 18px 17px 14px;
+                    padding: 17px 18px 8px;
                 }
-
                 .jadwal-home .sch-body {
-                    padding: 0 17px 19px;
+                    padding: 0 18px 19px;
                 }
-
             }
 
-
             @media (max-width: 575px) {
-
                 .jadwal-home .sch-img {
-                    height: 185px;
+                    height: 210px !important;
+                    max-height: 210px !important;
+                    min-height: 210px !important;
                 }
-
                 .jadwal-home .jadwal-home-button {
                     margin-top: 28px;
                 }
-
             }
         </style>
 
@@ -1709,80 +1787,135 @@
 
 
         {{-- =====================================================
-             SCHEDULE CARDS
+             SCHEDULE CARDS — KONSISTEN DENGAN HALAMAN /jadwal
         ====================================================== --}}
 
         <div class="schedule-grid">
 
             @foreach($jadwal as $item)
 
-                <div class="sch-card">
+                @php
+                    // Validasi gambar (TANPA Storage::exists)
+                    $imgValid =
+                        !empty($item->image)
+                        &&
+                        $item->image !== "null"
+                        &&
+                        trim($item->image) !== "";
 
-                    {{-- HEADER --}}
-                    <div class="sch-head">
+                    // Fallback jam
+                    $timeText = "";
+                    if (!empty($item->time) && $item->time !== "null") {
+                        $timeText = trim($item->time);
+                    } elseif (!empty($item->start_time)) {
+                        $timeText = substr($item->start_time, 0, 5);
+                        if (!empty($item->end_time)) {
+                            $timeText .= " – " . substr($item->end_time, 0, 5);
+                        }
+                    }
+                    if (empty($timeText)) {
+                        $timeText = "Lihat Pengumuman";
+                    }
 
-                        <span class="sch-day">
-                            <i class="bi bi-calendar3 me-1"></i>
+                    // Fallback lokasi
+                    $locText = trim($item->location ?? "");
+                    if (empty($locText) || $locText === "null") {
+                        $locText = "Dusun Jlegongan";
+                    }
+
+                    // Icon kegiatan
+                    $iconMap = [
+                        "pengajian" => "bi-moon-stars-fill",
+                        "karang" => "bi-people-fill",
+                        "taruna" => "bi-people-fill",
+                        "posyandu" => "bi-heart-pulse-fill",
+                        "arisan" => "bi-people-fill",
+                        "gotong" => "bi-houses-fill",
+                        "royong" => "bi-houses-fill",
+                        "olahraga" => "bi-trophy-fill",
+                        "tpa" => "bi-book-half",
+                    ];
+                    $actIcon = "bi-calendar-event-fill";
+                    $nameLow = mb_strtolower($item->name ?? "");
+                    foreach ($iconMap as $kw => $ic) {
+                        if (str_contains($nameLow, $kw)) {
+                            $actIcon = $ic;
+                            break;
+                        }
+                    }
+                @endphp
+
+                <div class="sch-card" data-day="{{ $item->day }}">
+
+                    {{-- FOTO / PLACEHOLDER (SELALU .sch-img 180px) --}}
+                    <div class="sch-img">
+
+                        <span class="chip-day-glass">
+                            <i class="bi bi-calendar3"></i>
                             {{ $item->day }}
                         </span>
 
-                        <h6 class="sch-name">
-                            {{ $item->name }}
-                        </h6>
-
-                    </div>
-
-
-                    {{-- IMAGE --}}
-                    @if($item->image)
-
-                        <div class="sch-img">
-
+                        @if($imgValid)
                             <img
                                 src="{{ asset('storage/' . ltrim($item->image, '/')) }}"
                                 alt="{{ $item->name }}"
                                 loading="lazy"
-                                onerror="this.parentElement.innerHTML='<div class=\'d-flex align-items-center justify-content-center h-100\' style=\'background:linear-gradient(135deg,#ecfdf5,#d1fae5);\'><i class=\'bi bi-calendar-event\' style=\'font-size:38px;color:#059669;opacity:.45;\'></i></div>'"
+                                onerror="
+                                    this.parentElement.innerHTML =
+                                        '<span class=\'chip-day-glass\'><i class=\'bi bi-calendar3\'></i> {{ addslashes($item->day) }}</span>' +
+                                        '<div class=\'d-flex align-items-center justify-content-center h-100 w-100\' style=\'background:linear-gradient(135deg, rgba(167,243,208,.55), rgba(16,185,129,.35));\'><i class=\'bi {{ $actIcon }}\' style=\'font-size:72px;color:#065f46;opacity:.5;\'></i></div>';
+                                    this.remove();
+                                "
                             >
+                        @else
+                            <div
+                                class="d-flex align-items-center justify-content-center h-100 w-100"
+                                style="background:linear-gradient(135deg, rgba(167,243,208,.55), rgba(16,185,129,.35));"
+                            >
+                                <i
+                                    class="bi {{ $actIcon }}"
+                                    style="font-size:72px;color:#065f46;opacity:.5;"
+                                ></i>
+                            </div>
+                        @endif
 
-                        </div>
+                    </div>
 
-                    @else
+                    {{-- NAMA KEGIATAN --}}
+                    <div class="sch-head">
+                        <h6 class="sch-name">
+                            {{ $item->name }}
+                        </h6>
+                    </div>
 
-                        {{-- Placeholder jika tidak ada gambar --}}
-                        <div
-                            class="sch-img d-flex align-items-center justify-content-center"
-                            style="background:linear-gradient(135deg,#ecfdf5,#d1fae5);"
-                        >
-
-                            <i
-                                class="bi bi-calendar-event"
-                                style="font-size:38px;color:#059669;opacity:.45;"
-                            ></i>
-
-                        </div>
-
-                    @endif
-
-
-                    {{-- BODY --}}
+                    {{-- INFO + DESKRIPSI --}}
                     <div class="sch-body">
 
-                        <span class="time-chip">
+                        <div class="sch-info-row">
+                            <span class="sch-info-chip">
+                                <i class="bi bi-clock-fill"></i>
+                                {{ $timeText }}
+                            </span>
+                            <span class="sch-info-chip">
+                                <i class="bi bi-geo-alt-fill"></i>
+                                {{ $locText }}
+                            </span>
+                        </div>
 
-                            <i class="bi bi-clock-fill"></i>
+                        @php
+                            $desc = trim($item->description ?? "");
+                            $descOk = !empty($desc) && $desc !== "null";
+                        @endphp
 
-                            {{ $item->time }}
-
-                        </span>
-
-
-                        @if($item->description)
-
-                            <p class="sch-desc mb-0 mt-2">
-                                {{ Str::limit($item->description, 120) }}
+                        @if($descOk)
+                            <p class="sch-desc">
+                                {{ Str::limit($desc, 140) }}
                             </p>
-
+                        @else
+                            <p class="sch-desc">
+                                Kegiatan rutin masyarakat Dusun Jlegongan
+                                untuk meningkatkan kebersamaan dan kesejahteraan warga.
+                            </p>
                         @endif
 
                     </div>
@@ -1815,7 +1948,6 @@
 
     </div>
 </section>
-```
 
 
 {{-- 9. PKK & KWT 2 CARD --}}

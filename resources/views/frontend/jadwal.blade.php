@@ -1303,7 +1303,7 @@
                     @php
 
                         /*
-                         * VALIDASI GAMBAR
+                         * VALIDASI GAMBAR — HANYA CEK FIELD ADA/TIDAK (TANPA Storage::exists)
                          */
 
                         $imgValid =
@@ -1312,27 +1312,6 @@
                             $item->image !== "null"
                             &&
                             trim($item->image) !== "";
-
-                        if ($imgValid) {
-
-                            try {
-
-                                $imgValid =
-                                    Storage::disk('public')
-                                    ->exists(
-                                        trim(
-                                            $item->image,
-                                            '/'
-                                        )
-                                    );
-
-                            } catch (\Exception $e) {
-
-                                $imgValid = false;
-
-                            }
-
-                        }
 
 
                         /*
@@ -1471,58 +1450,54 @@
 
                     {{-- CARD --}}
                     <div
-                        class="
-                            sch-card
-                            @if(!$imgValid) no-image @endif
-                        "
+                        class="sch-card"
                         data-day="{{ $item->day }}"
                     >
 
 
                         {{-- =================================================
-                             FOTO / PLACEHOLDER
+                             FOTO / PLACEHOLDER — SELALU PAKAI .sch-img AGAR HEIGHT 190px KONSISTEN
                         ================================================== --}}
 
-                        @if($imgValid)
+                        <div class="sch-img">
 
-                            <div class="sch-img">
+                            <span class="chip-day-glass">
 
-                                <span class="chip-day-glass">
+                                <i class="bi bi-calendar3"></i>
 
-                                    <i class="bi bi-calendar3"></i>
+                                {{ $item->day }}
 
-                                    {{ $item->day }}
+                            </span>
 
-                                </span>
+                            @if($imgValid)
 
                                 <img
                                     src="{{ asset('storage/' . ltrim($item->image, '/')) }}"
                                     alt="{{ $item->name }}"
                                     loading="lazy"
-                                    onerror="this.style.display='none'"
+                                    onerror="
+                                        this.parentElement.innerHTML =
+                                            '<span class=\'chip-day-glass\'><i class=\'bi bi-calendar3\'></i> {{ addslashes($item->day) }}</span>' +
+                                            '<div class=\'d-flex align-items-center justify-content-center h-100\' style=\'background:linear-gradient(135deg, rgba(167,243,208,.45), rgba(16,185,129,.35));\'><i class=\'bi {{ $actIcon }}\' style=\'font-size:72px;color:#065f46;opacity:.5;\'></i></div>';
+                                        this.remove();
+                                    "
                                 >
 
-                            </div>
+                            @else
 
-                        @else
+                                <div
+                                    class="d-flex align-items-center justify-content-center h-100 w-100"
+                                    style="background:linear-gradient(135deg, rgba(167,243,208,.45), rgba(16,185,129,.35));"
+                                >
+                                    <i
+                                        class="bi {{ $actIcon }}"
+                                        style="font-size:72px;color:#065f46;opacity:.5;"
+                                    ></i>
+                                </div>
 
-                            <div class="sch-placeholder">
+                            @endif
 
-                                <span class="chip-day-glass">
-
-                                    <i class="bi bi-calendar3"></i>
-
-                                    {{ $item->day }}
-
-                                </span>
-
-                                <i
-                                    class="bi {{ $actIcon }}"
-                                ></i>
-
-                            </div>
-
-                        @endif
+                        </div>
 
 
                         {{-- =================================================
