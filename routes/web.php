@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\GalleryController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/sejarah', [PageController::class, 'sejarah'])->name('sejarah');
 Route::get('/geografis', [PageController::class, 'geografis'])->name('geografis');
+Route::get('/struktur-kepadukuhan', [PageController::class, 'struktur'])->name('struktur');
 Route::get('/kependudukan', [PageController::class, 'kependudukan'])->name('kependudukan');
 Route::get('/kegiatan', [PageController::class, 'kegiatan'])->name('kegiatan');
 Route::get('/fasilitas', [PageController::class, 'fasilitas'])->name('fasilitas');

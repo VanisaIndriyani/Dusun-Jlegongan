@@ -19,6 +19,8 @@ class HomeController extends Controller
     {
         $sejarah = Content::where('type', 'sejarah')->first();
         $geografis = Content::where('type', 'geografis')->first();
+        $berandaHero = Content::where('type', 'beranda_hero')->first();
+        $kontak = Content::where('type', 'kontak')->first();
         
         $totalPenduduk = PopulationStatistic::where('category', 'jenis_kelamin')->sum('count');
         $jumlahLaki = PopulationStatistic::where('category', 'jenis_kelamin')->where('subcategory', 'Laki-laki')->value('count') ?? 0;
@@ -45,7 +47,7 @@ class HomeController extends Controller
         $jumlahKegiatan = Activity::where('is_active', true)->count();
         
         return view('frontend.home', compact(
-            'sejarah', 'geografis', 'totalPenduduk', 'jumlahLaki', 'jumlahPerempuan', 'ageStatistics',
+            'sejarah', 'geografis', 'berandaHero', 'kontak', 'totalPenduduk', 'jumlahLaki', 'jumlahPerempuan', 'ageStatistics',
             'kegiatan', 'fasilitas', 'potensi', 'featuredPotential', 'jadwal', 'pkk', 'kwt',
             'galeri', 'jumlahKegiatan'
         ));

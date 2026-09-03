@@ -489,17 +489,20 @@
                                 {{ $geografis->title }}
                             </h2>
 
-                            @if($geografis->description)
-
-                                <p class="geo-description fw-semibold">
-                                    {{ $geografis->description }}
-                                </p>
-
+                            @if($geografis->content)
+                                @if($geografis->description)
+                                    <p class="geo-description fw-semibold">
+                                        {{ $geografis->description }}
+                                    </p>
+                                @endif
+                                <div>
+                                    {!! $geografis->content !!}
+                                </div>
+                            @elseif($geografis->description)
+                                <div>
+                                    <p class="geo-description">{{ $geografis->description }}</p>
+                                </div>
                             @endif
-
-                            <div>
-                                {!! $geografis->content !!}
-                            </div>
 
                         </div>
 

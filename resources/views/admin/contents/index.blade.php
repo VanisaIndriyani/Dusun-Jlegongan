@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('page-title', 'Sejarah & Geografis')
+@section('page-title', 'Master Konten')
 @section('content')
 
 <div class="card">
@@ -26,7 +26,11 @@
                     @foreach($contents as $item)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td><span class="badge-soft" style="background:#d1fae5;color:#047857;">{{ $item->type }}</span></td>
+                        <td>
+                            <span class="badge-soft" style="background: {{ $item->type_color['bg'] }}; color: {{ $item->type_color['color'] }};">
+                                {{ $item->type_label }}
+                            </span>
+                        </td>
                         <td><strong>{{ $item->title }}</strong></td>
                         <td>
                             @if($item->image)

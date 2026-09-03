@@ -27,6 +27,12 @@ class PageController extends Controller
         return view('frontend.geografis', compact('geografis'));
     }
 
+    public function struktur()
+    {
+        $struktur = Content::where('type', 'struktur')->first();
+        return view('frontend.struktur', compact('struktur'));
+    }
+
     public function kependudukan()
     {
         $jenisKelamin = PopulationStatistic::where('category', 'jenis_kelamin')->get();

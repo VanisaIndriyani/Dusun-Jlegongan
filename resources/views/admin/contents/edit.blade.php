@@ -20,6 +20,9 @@
                     <select name="type" class="form-select" required>
                         <option value="sejarah" {{ $content->type == 'sejarah' ? 'selected' : '' }}>Sejarah</option>
                         <option value="geografis" {{ $content->type == 'geografis' ? 'selected' : '' }}>Geografis</option>
+                        <option value="struktur" {{ $content->type == 'struktur' ? 'selected' : '' }}>Struktur Kepadukuhan</option>
+                        <option value="beranda_hero" {{ $content->type == 'beranda_hero' ? 'selected' : '' }}>Hero Beranda (Gambar)</option>
+                        <option value="kontak" {{ $content->type == 'kontak' ? 'selected' : '' }}>Kontak (No. Telp)</option>
                     </select>
                 </div>
                 <div class="col-md-8">
@@ -27,12 +30,8 @@
                     <input type="text" name="title" class="form-control" value="{{ old('title', $content->title) }}" required>
                 </div>
                 <div class="col-md-12">
-                    <label class="form-label">Deskripsi Singkat</label>
-                    <input type="text" name="description" class="form-control" value="{{ old('description', $content->description) }}">
-                </div>
-                <div class="col-md-12">
-                    <label class="form-label">Isi Konten (HTML diperbolehkan)</label>
-                    <textarea name="content" rows="8" class="form-control">{{ old('content', $content->content) }}</textarea>
+                    <label class="form-label">Deskripsi / Keterangan</label>
+                    <textarea name="description" rows="5" class="form-control" placeholder="Masukkan deskripsi atau keterangan...">{{ old('description', $content->description) }}</textarea>
                 </div>
                 <div class="col-md-6">
                     <label class="form-label">Gambar (max 2MB)</label>

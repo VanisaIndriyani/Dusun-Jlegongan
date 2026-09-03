@@ -1258,6 +1258,7 @@
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="{{ route('sejarah') }}"><i class="bi bi-book"></i> Sejarah Dusun</a></li>
                     <li><a class="dropdown-item" href="{{ route('geografis') }}"><i class="bi bi-map"></i> Peta &amp; Geografis</a></li>
+                    <li><a class="dropdown-item" href="{{ route('struktur') }}"><i class="bi bi-diagram-2-fill"></i> Struktur Kepadukuhan</a></li>
                 </ul>
             </div>
             <a href="{{ route('kependudukan') }}" class="{{ request()->routeIs('kependudukan') ? 'nav-active' : '' }}">Kependudukan</a>
@@ -1286,6 +1287,7 @@
         <div class="drop-list">
             <a href="{{ route('sejarah') }}"><i class="bi bi-book me-2"></i>Sejarah Dusun</a>
             <a href="{{ route('geografis') }}"><i class="bi bi-map me-2"></i>Peta &amp; Geografis</a>
+            <a href="{{ route('struktur') }}"><i class="bi bi-diagram-2-fill me-2"></i>Struktur Kepadukuhan</a>
         </div>
         <a href="{{ route('kependudukan') }}"><i class="bi bi-people me-2"></i>Kependudukan</a>
         <a href="{{ route('kegiatan') }}"><i class="bi bi-calendar-event me-2"></i>Kegiatan</a>
@@ -1318,12 +1320,6 @@
                 <p class="about-text">
                     Dusun yang kaya akan nilai budaya toleransi dan gotong royong. Warga hidup berdampingan rukun, damai, dan penuh kehangatan dalam perbedaan.
                 </p>
-                <div class="social-row">
-                    <a href="#" title="Facebook"><i class="bi bi-facebook"></i></a>
-                    <a href="#" title="Instagram"><i class="bi bi-instagram"></i></a>
-                    <a href="#" title="YouTube"><i class="bi bi-youtube"></i></a>
-                    <a href="mailto:dusunjlegongan@mail.com" title="Email"><i class="bi bi-envelope"></i></a>
-                </div>
             </div>
             <div class="col-lg-2 col-md-3">
                 <h5>Menu</h5>
@@ -1331,6 +1327,7 @@
                     <li><a href="{{ route('home') }}">Beranda</a></li>
                     <li><a href="{{ route('sejarah') }}">Sejarah</a></li>
                     <li><a href="{{ route('geografis') }}">Geografis</a></li>
+                    <li><a href="{{ route('struktur') }}">Struktur Kepadukuhan</a></li>
                     <li><a href="{{ route('kependudukan') }}">Kependudukan</a></li>
                     <li><a href="{{ route('galeri') }}">Galeri</a></li>
                 </ul>
@@ -1349,8 +1346,7 @@
                 <h5>Kontak Kami</h5>
                 <ul class="contact-list">
                     <li><i class="bi bi-geo-alt-fill"></i> <span>Dusun Jlegongan, Kalurahan Margodadi, Kecamatan Seyegan, Kabupaten Sleman, D.I. Yogyakarta 55561</span></li>
-                    <li><i class="bi bi-telephone-fill"></i> <span>(0274) 123 4567</span></li>
-                    <li><i class="bi bi-envelope-fill"></i> <span>dusunjlegongan@mail.com</span></li>
+                    <li><i class="bi bi-telephone-fill"></i> <span>{{ $kontakGlobal && $kontakGlobal->description ? $kontakGlobal->description : '(0274) 123 4567' }}</span></li>
                     <li><i class="bi bi-clock-fill"></i> <span>Senin - Minggu, 24 Jam Layanan Informasi</span></li>
                 </ul>
             </div>

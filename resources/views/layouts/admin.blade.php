@@ -476,7 +476,7 @@
 
         <div class="menu-section">Master Konten</div>
         <a href="{{ route('admin.contents.index') }}" class="nav-link-admin {{ request()->routeIs('admin.contents.*') ? 'active' : '' }}">
-            <i class="bi bi-journal-text"></i><span>Sejarah &amp; Geografis</span>
+            <i class="bi bi-journal-text"></i><span>Konten Halaman</span>
         </a>
         <a href="{{ route('admin.population-statistics.index') }}" class="nav-link-admin {{ request()->routeIs('admin.population-statistics.*') ? 'active' : '' }}">
             <i class="bi bi-bar-chart-line-fill"></i><span>Data Kependudukan</span>

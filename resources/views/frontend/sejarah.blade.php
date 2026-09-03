@@ -42,10 +42,14 @@
                     @endif
                 </div>
                 <div class="content-body" style="font-size: 1.02rem; line-height: 1.95;">
-                    @if($sejarah->description)
-                    <p class="lead fw-semibold" style="color: var(--primary);">{{ $sejarah->description }}</p>
+                    @if($sejarah->content)
+                        @if($sejarah->description)
+                            <p class="lead fw-semibold" style="color: var(--primary);">{{ $sejarah->description }}</p>
+                        @endif
+                        {!! $sejarah->content !!}
+                    @elseif($sejarah->description)
+                        <p>{{ $sejarah->description }}</p>
                     @endif
-                    {!! $sejarah->content !!}
                 </div>
                 @else
                 <div class="alert alert-info rounded-4 d-flex gap-3 align-items-start">

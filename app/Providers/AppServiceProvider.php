@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Models\Content;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +20,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        view()->composer('layouts.frontend', function ($view) {
+            $kontak = Content::where('type', 'kontak')->first();
+            $view->with('kontakGlobal', $kontak);
+        });
     }
 }

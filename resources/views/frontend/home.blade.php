@@ -36,9 +36,23 @@
                     <span class="d-shape-2"></span>
 
                     <div class="hero-img">
-                        <img src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=beautiful%20indonesian%20village%20dusun%20green%20rice%20field%20traditional%20house%20tropical&image_size=portrait_4_3"
-                             alt="Dusun Jlegongan"
-                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'d-flex align-items-center justify-content-center h-100 text-white fs-4 text-center p-4 flex-column gap-3\'><div style=\'width:90px;height:90px;border-radius:24px;background:linear-gradient(135deg,#ffffff 0%,#fde68a 50%,#f59e0b 100%);color:#064e3b;font-weight:900;display:flex;align-items:center;justify-content:center;font-size:2.2rem;box-shadow:0 8px 24px rgba(0,0,0,0.2);\'>DJ</div><div><div class=\'fw-bold fs-2\'>Dusun Jlegongan</div><small class=\'opacity-75 fs-5\'>Kal. Margodadi, Kec. Seyegan, Sleman</small></div></div>'">
+                        @if($berandaHero && $berandaHero->image)
+                            <img src="{{ asset('storage/' . ltrim($berandaHero->image, '/')) }}"
+                                 alt="Dusun Jlegongan"
+                                 onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'d-flex align-items-center justify-content-center h-100 text-white fs-4 text-center p-4 flex-column gap-3\'><div style=\'width:90px;height:90px;border-radius:24px;background:linear-gradient(135deg,#ffffff 0%,#fde68a 50%,#f59e0b 100%);color:#064e3b;font-weight:900;display:flex;align-items:center;justify-content:center;font-size:2.2rem;box-shadow:0 8px 24px rgba(0,0,0,0.2);\'>DJ</div><div><div class=\'fw-bold fs-2\'>Dusun Jlegongan</div><small class=\'opacity-75 fs-5\'>Kal. Margodadi, Kec. Seyegan, Sleman</small></div></div>'">
+                        @elseif($geografis && $geografis->image)
+                            <img src="{{ asset('storage/' . ltrim($geografis->image, '/')) }}"
+                                 alt="Dusun Jlegongan"
+                                 onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'d-flex align-items-center justify-content-center h-100 text-white fs-4 text-center p-4 flex-column gap-3\'><div style=\'width:90px;height:90px;border-radius:24px;background:linear-gradient(135deg,#ffffff 0%,#fde68a 50%,#f59e0b 100%);color:#064e3b;font-weight:900;display:flex;align-items:center;justify-content:center;font-size:2.2rem;box-shadow:0 8px 24px rgba(0,0,0,0.2);\'>DJ</div><div><div class=\'fw-bold fs-2\'>Dusun Jlegongan</div><small class=\'opacity-75 fs-5\'>Kal. Margodadi, Kec. Seyegan, Sleman</small></div></div>'">
+                        @else
+                            <div class="d-flex align-items-center justify-content-center h-100 text-white text-center p-4 flex-column gap-3">
+                                <div style="width:90px;height:90px;border-radius:24px;background:linear-gradient(135deg,#ffffff 0%,#fde68a 50%,#f59e0b 100%);color:#064e3b;font-weight:900;display:flex;align-items:center;justify-content:center;font-size:2.2rem;box-shadow:0 8px 24px rgba(0,0,0,0.2);">DJ</div>
+                                <div>
+                                    <div class="fw-bold fs-2">Dusun Jlegongan</div>
+                                    <small class="opacity-75 fs-5">Kal. Margodadi, Kec. Seyegan, Sleman</small>
+                                </div>
+                            </div>
+                        @endif
                     </div>
 
                     <div class="float-card float-1">
@@ -127,11 +141,25 @@
 
         <div class="about-grid">
             <div class="about-photo">
-                <span class="about-accent"></span>
-                <div class="about-img">
-                    <img src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=indonesian%20village%20community%20gathering%20gotong%20royong%20traditional%20culture&image_size=portrait_4_3"
-                         alt="Profil Dusun Jlegongan"
-                         onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'d-flex align-items-center justify-content-center h-100 p-4 text-center flex-column gap-3\' style=\'background:linear-gradient(135deg,#d1fae5 0%,#a7f3d0 100%);\'><i class=\'bi bi-house-heart\' style=\'font-size:68px;color:#065f46;\'></i><div><div class=\'fw-bold fs-3\' style=\'color:#064e3b;\'>Dusun Jlegongan</div><small style=\'color:#047857;\' class=\'fs-6\'>Rumah bagi kerukunan dan kebersamaan</small></div></div>'">
+                <span class="about-accent" style="border-width: 2px; border-color: var(--accent); opacity: 0.4; top: -16px; left: -16px; border-radius: calc(var(--radius-lg) + 4px);"></span>
+                <div class="about-img" style="border: 3px solid rgba(255,255,255,0.9); box-shadow: 0 16px 48px rgba(15,23,42,0.12), 0 0 0 1px rgba(6,95,70,0.08);">
+                    @if($sejarah && $sejarah->image)
+                        <img src="{{ asset('storage/' . ltrim($sejarah->image, '/')) }}"
+                             alt="Profil Dusun Jlegongan"
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'d-flex align-items-center justify-content-center h-100 p-4 text-center flex-column gap-3\' style=\'background:linear-gradient(135deg,#d1fae5 0%,#a7f3d0 100%);\'><i class=\'bi bi-house-heart\' style=\'font-size:68px;color:#065f46;\'></i><div><div class=\'fw-bold fs-3\' style=\'color:#064e3b;\'>Dusun Jlegongan</div><small style=\'color:#047857;\' class=\'fs-6\'>Rumah bagi kerukunan dan kebersamaan</small></div></div>'">
+                    @elseif($geografis && $geografis->image)
+                        <img src="{{ asset('storage/' . ltrim($geografis->image, '/')) }}"
+                             alt="Profil Dusun Jlegongan"
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'d-flex align-items-center justify-content-center h-100 p-4 text-center flex-column gap-3\' style=\'background:linear-gradient(135deg,#d1fae5 0%,#a7f3d0 100%);\'><i class=\'bi bi-house-heart\' style=\'font-size:68px;color:#065f46;\'></i><div><div class=\'fw-bold fs-3\' style=\'color:#064e3b;\'>Dusun Jlegongan</div><small style=\'color:#047857;\' class=\'fs-6\'>Rumah bagi kerukunan dan kebersamaan</small></div></div>'">
+                    @else
+                        <div class="d-flex align-items-center justify-content-center h-100 p-4 text-center flex-column gap-3" style="background:linear-gradient(135deg,#d1fae5 0%,#a7f3d0 100%);">
+                            <i class="bi bi-house-heart" style="font-size:68px;color:#065f46;"></i>
+                            <div>
+                                <div class="fw-bold fs-3" style="color:#064e3b;">Dusun Jlegongan</div>
+                                <small style="color:#047857;" class="fs-6">Rumah bagi kerukunan dan kebersamaan</small>
+                            </div>
+                        </div>
+                    @endif
                 </div>
                 <div class="about-stamp">
                     <i class="bi bi-award-fill text-amber"></i>
@@ -466,7 +494,7 @@
                     <div class="kegiatan-card">
 
                         {{-- FOTO --}}
-                        @if($item->image && Storage::disk('public')->exists($item->image))
+                        @if($item->image)
 
                             <div class="kegiatan-photo">
 
@@ -479,6 +507,7 @@
                                     src="{{ asset('storage/' . ltrim($item->image, '/')) }}"
                                     alt="{{ $item->name }}"
                                     loading="lazy"
+                                    onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'kegiatan-category\'><i class=\'bi bi-calendar-event-fill\'></i>{{ addslashes($item->category) }}</span><div class=\'d-flex align-items-center justify-content-center h-100\' style=\'background:linear-gradient(135deg,#ecfdf5,#d1fae5);\'><i class=\'bi bi-calendar-event-fill\' style=\'font-size:48px;opacity:.55;color:#059669;\'></i></div>'"
                                 >
 
                             </div>
@@ -610,12 +639,14 @@
             <div class="col-md-6 col-lg-4">
                 <div class="fac-card h-100">
                     <div class="fac-photo">
-                        @if($item->image && Storage::disk('public')->exists($item->image))
-                            <img src="{{ asset('storage/' . ltrim($item->image, '/')) }}" alt="{{ $item->name }}">
-                        @else
-                            <img src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt={{ urlencode(($item->name ?? 'Fasilitas umum').' indonesia building ') }}&image_size=landscape_16_9"
+                        @if($item->image)
+                            <img src="{{ asset('storage/' . ltrim($item->image, '/')) }}"
                                  alt="{{ $item->name }}"
                                  onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'d-flex align-items-center justify-content-center h-100\' style=\'background:linear-gradient(135deg,#d1fae5,#a7f3d0);\'><i class=\'bi bi-building\' style=\'font-size:72px;color:#065f46;\'></i></div>'">
+                        @else
+                            <div class="d-flex align-items-center justify-content-center h-100" style="background:linear-gradient(135deg,#d1fae5,#a7f3d0);">
+                                <i class="bi bi-building" style="font-size:72px;color:#065f46;"></i>
+                            </div>
                         @endif
                         <span class="overlay-ic"><i class="bi bi-building-fill"></i></span>
                         @if($item->schedule && str_contains(strtolower($item->name), strtolower('TPA')))
@@ -1205,8 +1236,7 @@
 
                     @if(
                         $featuredPotential &&
-                        $featuredPotential->image &&
-                        Storage::disk('public')->exists($featuredPotential->image)
+                        $featuredPotential->image
                     )
 
                         <div class="poten-card-img">
@@ -1215,6 +1245,7 @@
                                 src="{{ asset('storage/' . ltrim($featuredPotential->image, '/')) }}"
                                 alt="{{ $featuredPotential->title ?? 'Sosial Kemasyarakatan' }}"
                                 loading="lazy"
+                                onerror="this.parentElement.style.display='none';"
                             >
 
                         </div>
@@ -1299,10 +1330,7 @@
                     <div class="poten-card h-100">
 
 
-                        @if(
-                            $item->image &&
-                            Storage::disk('public')->exists($item->image)
-                        )
+                        @if($item->image)
 
                             <div class="poten-card-img">
 
@@ -1310,6 +1338,7 @@
                                     src="{{ asset('storage/' . ltrim($item->image, '/')) }}"
                                     alt="{{ $item->title }}"
                                     loading="lazy"
+                                    onerror="this.parentElement.outerHTML='<div class=\'poten-ic\'><i class=\'bi bi-lightbulb-fill\'></i></div>';"
                                 >
 
                             </div>
@@ -1705,10 +1734,7 @@
 
 
                     {{-- IMAGE --}}
-                    @if(
-                        $item->image &&
-                        Storage::disk('public')->exists($item->image)
-                    )
+                    @if($item->image)
 
                         <div class="sch-img">
 
@@ -1716,6 +1742,7 @@
                                 src="{{ asset('storage/' . ltrim($item->image, '/')) }}"
                                 alt="{{ $item->name }}"
                                 loading="lazy"
+                                onerror="this.parentElement.innerHTML='<div class=\'d-flex align-items-center justify-content-center h-100\' style=\'background:linear-gradient(135deg,#ecfdf5,#d1fae5);\'><i class=\'bi bi-calendar-event\' style=\'font-size:38px;color:#059669;opacity:.45;\'></i></div>'"
                             >
 
                         </div>
@@ -1778,7 +1805,7 @@
                 class="btn btn-primary btn-lg"
             >
 
-                Lihat Semua Jadwal
+                Lihat Semua Jadwal dan Deskripsi
 
                 <i class="bi bi-arrow-right ms-2"></i>
 
@@ -2253,8 +2280,7 @@
 
                     @if(
                         $pkk &&
-                        $pkk->image &&
-                        Storage::disk('public')->exists($pkk->image)
+                        $pkk->image
                     )
 
                         <div class="org-banner-photo">
@@ -2263,6 +2289,7 @@
                                 src="{{ asset('storage/' . ltrim($pkk->image, '/')) }}"
                                 alt="{{ $pkk->name ?? 'PKK Jlegongan' }}"
                                 loading="lazy"
+                                onerror="this.parentElement.outerHTML='<div class=\'org-banner org-pkk\'><i class=\'bi bi-people-fill\'></i><div><h5 class=\'org-name mb-0\'>{{ addslashes($pkk->name ?? 'PKK Jlegongan') }}</h5><small>Pembinaan Kesejahteraan Keluarga</small></div></div>';"
                             >
 
                             <div class="org-banner-overlay">
@@ -2355,8 +2382,7 @@
 
                     @if(
                         $kwt &&
-                        $kwt->image &&
-                        Storage::disk('public')->exists($kwt->image)
+                        $kwt->image
                     )
 
                         <div class="org-banner-photo">
@@ -2365,6 +2391,7 @@
                                 src="{{ asset('storage/' . ltrim($kwt->image, '/')) }}"
                                 alt="{{ $kwt->name ?? 'KWT Jlegongan' }}"
                                 loading="lazy"
+                                onerror="this.parentElement.outerHTML='<div class=\'org-banner org-kwt\'><i class=\'bi bi-flower2\'></i><div><h5 class=\'org-name mb-0\'>{{ addslashes($kwt->name ?? 'KWT Jlegongan') }}</h5><small>Kelompok Wanita Tani</small></div></div>';"
                             >
 
                             <div class="org-banner-overlay">
@@ -2490,8 +2517,8 @@
                 @php
                     $size = ($idx % 3 === 0) ? 'portrait_4_3' : (($idx % 2 === 0) ? 'landscape_4_3' : 'square_hd');
                     $prompt = urlencode(($item->title ?? 'Dusun Jlegongan') . ' ' . ($item->category ?? 'indonesia village') . ' photography natural');
-                    $imgUrl = "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt={$prompt}&image_size={$size}";
-                    if ($item->image && Storage::disk('public')->exists($item->image)) {
+                    $imgUrl = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><rect fill='%23d1fae5' width='400' height='400'/><text x='50%25' y='50%25' font-family='Arial' fill='%23059669' text-anchor='middle' dy='.3em' font-size='22'>" . htmlspecialchars($item->title ?? 'Galeri') . "</text></svg>";
+                    if ($item->image) {
                         $imgUrl = asset('storage/' . ltrim($item->image, '/'));
                     }
                 @endphp
