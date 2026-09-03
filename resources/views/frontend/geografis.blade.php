@@ -480,18 +480,28 @@
 
                         <div class="content-body">
 
-                            <div class="section-kicker">
-                                <i class="bi bi-info-circle-fill"></i>
-                                Informasi Wilayah
-                            </div>
+                            <span class="d-inline-flex align-items-center gap-2 px-3 py-1 mb-3 rounded-pill"
+                                  style="background: rgba(59,130,246,.12);
+                                         color: #1d4ed8;
+                                         font-size: .76rem;
+                                         font-weight: 750;
+                                         letter-spacing: .3px;">
+                                <i class="bi bi-geo-alt"></i>
+                                INFORMASI WILAYAH
+                            </span>
 
-                            <h2>
+                            <h1 class="fw-bold mb-2"
+                                style="font-size: clamp(2rem, 4.6vw, 3.1rem);
+                                       line-height: 1.12;
+                                       color: #0f172a;
+                                       letter-spacing: -.02em;">
                                 {{ $geografis->title }}
-                            </h2>
+                            </h1>
 
                             @if($geografis->content)
                                 @if($geografis->description)
-                                    <p class="geo-description fw-semibold">
+                                    <p class="geo-description lead mb-4 fw-semibold"
+                                       style="color: #0f766e; font-size: 1.12rem; line-height: 1.75;">
                                         {{ $geografis->description }}
                                     </p>
                                 @endif
@@ -499,8 +509,11 @@
                                     {!! $geografis->content !!}
                                 </div>
                             @elseif($geografis->description)
-                                <div>
-                                    <p class="geo-description">{{ $geografis->description }}</p>
+                                <div class="mt-2">
+                                    <p class="geo-description lead mb-0"
+                                       style="color: #0f766e; font-size: 1.12rem; line-height: 1.75;">
+                                        {{ $geografis->description }}
+                                    </p>
                                 </div>
                             @endif
 
