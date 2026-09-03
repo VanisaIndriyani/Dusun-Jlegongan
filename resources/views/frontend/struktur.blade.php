@@ -19,16 +19,24 @@
 <section class="section">
     <div class="wrap-container">
         <div class="row g-5 justify-content-center">
-            <div class="col-lg-10">
+            <div class="col-lg-11">
                 @if($struktur)
-                <div class="card-x overflow-hidden mb-5">
+                <div class="card-x overflow-hidden mb-5 w-100">
                     @if($struktur->image)
                     <div class="card-x-thumb position-relative p-0" style="aspect-ratio: 16/9; height: auto;">
                         <img src="{{ asset('storage/' . ltrim($struktur->image, '/')) }}"
                              alt="{{ $struktur->title }}"
                              class="w-100 h-100 object-fit-cover"
                              style="aspect-ratio: 16/9;"
-                             onerror="this.parentElement.innerHTML=''; this.remove();">
+                             onerror="
+                                this.parentElement.innerHTML =
+                                    '<div class=\'d-flex flex-column align-items-center justify-content-center h-100 text-white text-center px-4\' style=\'aspect-ratio:16/9;background:linear-gradient(135deg,#a7f3d0 0%,#059669 100%);\'>' +
+                                    '<i class=\'bi bi-diagram-2-fill fs-1 mb-3\'></i>' +
+                                    '<h3 class=\'fw-bold mb-1\'>{{ addslashes($struktur->title) }}</h3>' +
+                                    '<small class=\'opacity-90\'>Struktur organisasi Dusun Jlegongan</small>' +
+                                    '</div>';
+                                this.remove();
+                             ">
                         <div class="position-absolute bottom-0 start-0 w-100 p-4 text-white z-2" style="background: linear-gradient(180deg, rgba(4,120,87,0) 0%, rgba(4,120,87,0.85) 100%);">
                             <h3 class="fw-bold mb-1 text-white">{{ $struktur->title }}</h3>
                             <small class="opacity-90 text-white">Struktur organisasi Dusun Jlegongan</small>

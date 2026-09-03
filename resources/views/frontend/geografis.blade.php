@@ -404,7 +404,7 @@
         <div class="wrap-container">
 
             <div class="row justify-content-center">
-                <div class="col-lg-10">
+                <div class="col-lg-11">
 
                     {{-- MAP --}}
                     <div class="map-card">
