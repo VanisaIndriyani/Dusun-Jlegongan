@@ -140,28 +140,78 @@
         </div>
 
         <div class="about-grid">
-            <div class="about-photo">
-                <span class="about-accent" style="border-width: 2px; border-color: var(--accent); opacity: 0.4; top: -16px; left: -16px; border-radius: calc(var(--radius-lg) + 4px);"></span>
-                <div class="about-img" style="border: 3px solid rgba(255,255,255,0.9); box-shadow: 0 16px 48px rgba(15,23,42,0.12), 0 0 0 1px rgba(6,95,70,0.08);">
+            <div class="about-photo" style="position: relative;">
+
+                {{-- Foto utama: border putih TEBAL + shadow premium 3 layer TANPA ACCENT GARIS BELAKANG! --}}
+                <div class="about-img"
+                     style="position: relative;
+                            z-index: 2;
+                            border: 4px solid #ffffff;
+                            border-radius: 20px;
+                            overflow: hidden;
+                            background: #ffffff;
+                            box-shadow:
+                                0 24px 68px -14px rgba(15,23,42,0.22),
+                                0 12px 36px -12px rgba(15,23,42,0.10),
+                                0 0 0 1px rgba(148,163,184,0.15);">
+
                     @if($sejarah && $sejarah->image)
                         <img src="{{ asset('storage/' . ltrim($sejarah->image, '/')) }}"
                              alt="Profil Dusun Jlegongan"
-                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'d-flex align-items-center justify-content-center h-100 p-4 text-center flex-column gap-3\' style=\'background:linear-gradient(135deg,#d1fae5 0%,#a7f3d0 100%);\'><i class=\'bi bi-house-heart\' style=\'font-size:68px;color:#065f46;\'></i><div><div class=\'fw-bold fs-3\' style=\'color:#064e3b;\'>Dusun Jlegongan</div><small style=\'color:#047857;\' class=\'fs-6\'>Rumah bagi kerukunan dan kebersamaan</small></div></div>'">
+                             loading="lazy"
+                             class="w-100 h-100 object-fit-cover"
+                             onerror="
+                                this.parentElement.innerHTML=
+                                    '<div class=\'d-flex align-items-center justify-content-center h-100 p-4 text-center flex-column gap-3\' style=\'aspect-ratio:4/5;background:linear-gradient(135deg,#d1fae5 0%,#a7f3d0 100%);min-height:520px;\'>' +
+                                    '<i class=\'bi bi-house-heart\' style=\'font-size:76px;color:#065f46;\'></i>' +
+                                    '<div>' +
+                                    '<div class=\'fw-bold fs-2\' style=\'color:#064e3b;\'>Dusun Jlegongan</div>' +
+                                    '<small style=\'color:#047857;\' class=\'fs-6\'>Rumah bagi kerukunan dan kebersamaan</small>' +
+                                    '</div>' +
+                                    '</div>';
+                                this.remove();
+                             ">
                     @elseif($geografis && $geografis->image)
                         <img src="{{ asset('storage/' . ltrim($geografis->image, '/')) }}"
                              alt="Profil Dusun Jlegongan"
-                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'d-flex align-items-center justify-content-center h-100 p-4 text-center flex-column gap-3\' style=\'background:linear-gradient(135deg,#d1fae5 0%,#a7f3d0 100%);\'><i class=\'bi bi-house-heart\' style=\'font-size:68px;color:#065f46;\'></i><div><div class=\'fw-bold fs-3\' style=\'color:#064e3b;\'>Dusun Jlegongan</div><small style=\'color:#047857;\' class=\'fs-6\'>Rumah bagi kerukunan dan kebersamaan</small></div></div>'">
+                             loading="lazy"
+                             class="w-100 h-100 object-fit-cover"
+                             onerror="
+                                this.parentElement.innerHTML=
+                                    '<div class=\'d-flex align-items-center justify-content-center h-100 p-4 text-center flex-column gap-3\' style=\'aspect-ratio:4/5;background:linear-gradient(135deg,#d1fae5 0%,#a7f3d0 100%);min-height:520px;\'>' +
+                                    '<i class=\'bi bi-house-heart\' style=\'font-size:76px;color:#065f46;\'></i>' +
+                                    '<div>' +
+                                    '<div class=\'fw-bold fs-2\' style=\'color:#064e3b;\'>Dusun Jlegongan</div>' +
+                                    '<small style=\'color:#047857;\' class=\'fs-6\'>Rumah bagi kerukunan dan kebersamaan</small>' +
+                                    '</div>' +
+                                    '</div>';
+                                this.remove();
+                             ">
                     @else
-                        <div class="d-flex align-items-center justify-content-center h-100 p-4 text-center flex-column gap-3" style="background:linear-gradient(135deg,#d1fae5 0%,#a7f3d0 100%);">
-                            <i class="bi bi-house-heart" style="font-size:68px;color:#065f46;"></i>
+                        <div class="d-flex align-items-center justify-content-center h-100 p-4 text-center flex-column gap-3"
+                             style="aspect-ratio: 4/5; min-height: 520px; background:linear-gradient(135deg,#d1fae5 0%,#a7f3d0 100%);">
+                            <i class="bi bi-house-heart" style="font-size:76px;color:#065f46;"></i>
                             <div>
-                                <div class="fw-bold fs-3" style="color:#064e3b;">Dusun Jlegongan</div>
+                                <div class="fw-bold fs-2" style="color:#064e3b;">Dusun Jlegongan</div>
                                 <small style="color:#047857;" class="fs-6">Rumah bagi kerukunan dan kebersamaan</small>
                             </div>
                         </div>
                     @endif
                 </div>
-                <div class="about-stamp">
+
+                {{-- Badge "Sejak berdiri" — tetap ada di kanan bawah --}}
+                <div class="about-stamp"
+                     style="position: absolute;
+                            z-index: 3;
+                            right: -10px;
+                            bottom: -6px;
+                            border-radius: 18px;
+                            padding: 12px 18px 12px 14px;
+                            background: #ffffff;
+                            border: 1px solid rgba(226,232,240,0.9);
+                            box-shadow:
+                                0 14px 34px -10px rgba(15,23,42,0.25),
+                                0 0 0 1px rgba(245,158,11,0.12);">
                     <i class="bi bi-award-fill text-amber"></i>
                     <div>
                         <b>Sejak berdiri</b>
