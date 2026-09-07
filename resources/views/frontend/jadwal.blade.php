@@ -450,370 +450,144 @@
 
 
     /* =====================================================
-       FOTO - LEBIH BESAR
+       FOTO — FULL COVER ATAS (SELALU 180px)
     ===================================================== */
 
-    .sch-img,
-    .sch-placeholder {
-
+    .sch-img {
         position: relative;
 
         width: 100% !important;
-
-        /*
-         * FOTO DIBUAT LEBIH BESAR
-         */
-        height: 190px !important;
-
-        max-height: 190px !important;
-
-        min-height: 190px !important;
+        height: 180px !important;
+        max-height: 180px !important;
+        min-height: 180px !important;
 
         overflow: hidden;
-
-        margin: 0 !important;
-
-        border-radius: 0;
 
         background:
             linear-gradient(
                 135deg,
-                #d1fae5 0%,
-                #a7f3d0 100%
+                rgba(167,243,208,.55),
+                rgba(16,185,129,.35)
             );
     }
 
-
-    /* FOTO */
-
     .sch-img img {
-
-        width: 100% !important;
-
-        height: 100% !important;
-
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
         display: block;
 
-        object-fit: cover;
-
-        object-position: center;
-
-        transition:
-            transform .65s
-            cubic-bezier(.4,0,.2,1);
+        transition: transform .5s cubic-bezier(.4,0,.2,1);
     }
 
-    .sch-card:hover
-    .sch-img img {
+    .sch-card:hover .sch-img img {
         transform: scale(1.06);
     }
 
 
     /* =====================================================
-       OVERLAY FOTO
-    ===================================================== */
-
-    .sch-img::after,
-    .sch-placeholder::after {
-
-        content: "";
-
-        position: absolute;
-
-        inset: 0;
-
-        background:
-            linear-gradient(
-                180deg,
-                rgba(0,0,0,.02) 20%,
-                rgba(0,0,0,.08) 55%,
-                rgba(4,120,87,.45) 100%
-            );
-
-        pointer-events: none;
-
-        z-index: 1;
-    }
-
-
-    /* =====================================================
-       PLACEHOLDER
-    ===================================================== */
-
-    .sch-placeholder {
-
-        color: #059669;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: center;
-    }
-
-    .sch-placeholder::before {
-
-        content: "";
-
-        position: absolute;
-
-        inset: 0;
-
-        background:
-            radial-gradient(
-                circle at 25% 20%,
-                rgba(255,255,255,.55) 0%,
-                transparent 45%
-            ),
-
-            radial-gradient(
-                circle at 75% 80%,
-                rgba(16,185,129,.18) 0%,
-                transparent 55%
-            );
-
-        z-index: 0;
-    }
-
-    .sch-placeholder i {
-
-        position: relative;
-
-        z-index: 2;
-
-        font-size: 52px !important;
-
-        opacity: .55;
-
-        filter:
-            drop-shadow(
-                0 7px 14px
-                rgba(16,185,129,.20)
-            );
-    }
-
-
-    /* =====================================================
-       CHIP HARI
+       CHIP HARI — GLASS WHITE (SAMA DENGAN BERANDA)
     ===================================================== */
 
     .chip-day-glass {
-
         position: absolute;
-
         top: 14px;
-
         left: 14px;
-
-        z-index: 5;
+        z-index: 3;
 
         display: inline-flex;
-
         align-items: center;
+        gap: 5px;
 
-        gap: 6px;
+        padding: 6px 11px;
 
-        padding: 7px 13px;
+        border-radius: 50px;
 
-        border-radius: 999px;
+        background: rgba(255,255,255,.88);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
 
-        background:
-            var(
-                --sch-chip-bg,
-                rgba(16,185,129,.18)
-            );
+        color: #0f172a;
 
-        backdrop-filter:
-            blur(9px)
-            saturate(180%);
+        font-size: .68rem;
+        font-weight: 800;
 
-        -webkit-backdrop-filter:
-            blur(9px)
-            saturate(180%);
-
-        color:
-            var(
-                --sch-chip-color,
-                #047857
-            );
-
-        font-size: .72rem;
-
-        font-weight: 850;
-
-        letter-spacing: .25px;
-
-        border:
-            1px solid
-            rgba(255,255,255,.5);
-
-        box-shadow:
-            0 6px 16px
-            rgba(15,23,42,.12);
-
-        text-transform: uppercase;
-    }
-
-    .chip-day-glass i {
-        font-size: .7rem;
+        box-shadow: 0 3px 10px rgba(15,23,42,.12);
+        border: 1px solid rgba(255,255,255,.7);
     }
 
 
     /* =====================================================
-       CARD HEADER
+       CARD HEADER (NAMA KEGIATAN)
     ===================================================== */
 
     .sch-head {
-
-        padding:
-            20px
-            22px
-            0 !important;
-
-        margin-bottom: 14px;
-
-        position: relative;
-    }
-
-    .sch-head .sch-day {
-        display: none !important;
+        padding: 18px 20px 8px;
     }
 
     .sch-name {
-
         margin: 0;
 
         color: #0f172a;
 
-        font-size: 1.12rem;
-
+        font-size: 1.02rem;
         line-height: 1.4;
-
-        font-weight: 800;
-
-        letter-spacing: -.2px;
-    }
-
-    .sch-name::after {
-
-        content: "";
-
-        display: block;
-
-        margin-top: 11px;
-
-        width: 38px;
-
-        height: 3px;
-
-        border-radius: 999px;
-
-        background:
-            linear-gradient(
-                90deg,
-                var(--sch-accent,#10b981),
-                transparent
-            );
-
-        opacity: .85;
+        font-weight: 750;
     }
 
 
     /* =====================================================
-       BODY
+       BODY (INFO & DESKRIPSI)
     ===================================================== */
 
     .sch-body {
-
-        padding:
-            0
-            22px
-            22px !important;
+        padding: 0 20px 20px;
     }
 
     .sch-info-row {
-
         display: flex;
-
         flex-wrap: wrap;
-
-        gap: 10px;
-
-        margin-bottom: 14px;
+        gap: 8px;
+        margin-bottom: 12px;
     }
 
     .sch-info-chip {
-
         display: inline-flex;
-
         align-items: center;
+        gap: 6px;
 
-        gap: 7px;
+        padding: 7px 11px;
 
-        padding: 8px 11px;
+        border-radius: 50px;
 
-        border-radius: 11px;
+        background: var(--sch-chip-bg, #ecfdf5);
+        color: var(--sch-chip-color, #047857);
 
-        background: #f8fafc;
-
-        border:
-            1px solid
-            #e2e8f0;
-
-        color: #334155;
-
-        font-size: .74rem;
-
-        font-weight: 650;
+        font-size: .72rem;
+        font-weight: 750;
 
         line-height: 1;
-
-        transition: .25s ease;
-    }
-
-    .sch-card:hover
-    .sch-info-chip {
-
-        background:
-            var(
-                --sch-chip-bg,
-                #ecfdf5
-            );
-
-        border-color: transparent;
-
-        color:
-            var(
-                --sch-chip-color,
-                #047857
-            );
     }
 
     .sch-info-chip i {
         font-size: .7rem;
-        opacity: .85;
     }
 
 
     /* DESKRIPSI */
 
     .sch-desc {
-
-        margin: 0;
-
         color: #64748b;
 
-        font-size: .84rem;
-
-        line-height: 1.75;
+        font-size: .78rem;
+        line-height: 1.7;
 
         display: -webkit-box;
-
         -webkit-line-clamp: 3;
-
         -webkit-box-orient: vertical;
-
         overflow: hidden;
+
+        margin: 0;
     }
 
 
@@ -1099,14 +873,10 @@
             gap: 22px;
         }
 
-        .sch-img,
-        .sch-placeholder {
-
-            height: 195px !important;
-
-            max-height: 195px !important;
-
-            min-height: 195px !important;
+        .sch-img {
+            height: 190px !important;
+            max-height: 190px !important;
+            min-height: 190px !important;
         }
     }
 
@@ -1141,18 +911,18 @@
             gap: 18px;
         }
 
-        .sch-img,
-        .sch-placeholder {
-
+        .sch-img {
             height: 200px !important;
-
             max-height: 200px !important;
-
             min-height: 200px !important;
         }
 
-        .sch-info-row {
-            gap: 9px;
+        .sch-head {
+            padding: 17px 18px 8px;
+        }
+
+        .sch-body {
+            padding: 0 18px 19px;
         }
 
         .jadwal-info {
@@ -1186,30 +956,10 @@
             gap: 18px;
         }
 
-        .sch-img,
-        .sch-placeholder {
-
-            height: 215px !important;
-
-            max-height: 215px !important;
-
-            min-height: 215px !important;
-        }
-
-        .sch-head {
-
-            padding:
-                18px
-                19px
-                0 !important;
-        }
-
-        .sch-body {
-
-            padding:
-                0
-                19px
-                20px !important;
+        .sch-img {
+            height: 210px !important;
+            max-height: 210px !important;
+            min-height: 210px !important;
         }
 
         .jadwal-intro {
@@ -1478,7 +1228,7 @@
                                     onerror="
                                         this.parentElement.innerHTML =
                                             '<span class=\'chip-day-glass\'><i class=\'bi bi-calendar3\'></i> {{ addslashes($item->day) }}</span>' +
-                                            '<div class=\'d-flex align-items-center justify-content-center h-100\' style=\'background:linear-gradient(135deg, rgba(167,243,208,.45), rgba(16,185,129,.35));\'><i class=\'bi {{ $actIcon }}\' style=\'font-size:72px;color:#065f46;opacity:.5;\'></i></div>';
+                                            '<div class=\'d-flex align-items-center justify-content-center h-100 w-100\' style=\'background:linear-gradient(135deg, rgba(167,243,208,.55), rgba(16,185,129,.35));\'><i class=\'bi {{ $actIcon }}\' style=\'font-size:72px;color:#065f46;opacity:.5;\'></i></div>';
                                         this.remove();
                                     "
                                 >
@@ -1487,7 +1237,7 @@
 
                                 <div
                                     class="d-flex align-items-center justify-content-center h-100 w-100"
-                                    style="background:linear-gradient(135deg, rgba(167,243,208,.45), rgba(16,185,129,.35));"
+                                    style="background:linear-gradient(135deg, rgba(167,243,208,.55), rgba(16,185,129,.35));"
                                 >
                                     <i
                                         class="bi {{ $actIcon }}"
