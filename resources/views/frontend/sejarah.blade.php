@@ -116,41 +116,6 @@
                         {{ $sejarah->title }}
                     </h1>
 
-                    @if($sejarah->description && !$sejarah->content)
-                    <p class="lead mb-0"
-                       style="color: #0f766e;
-                              font-weight: 550;
-                              font-size: 1.12rem;
-                              line-height: 1.75;">
-                        {{ $sejarah->description }}
-                    </p>
-                    @elseif($sejarah->description)
-                    <p class="lead mb-0"
-                       style="color: #0f766e;
-                              font-weight: 550;
-                              font-size: 1.12rem;
-                              line-height: 1.75;">
-                        {{ $sejarah->description }}
-                    </p>
-                    @else
-                    <p class="mb-0 text-muted" style="font-size: 1.05rem;">
-                        Sejarah yang patut dikenang
-                    </p>
-                    @endif
-
-                </div>
-
-
-                {{-- ===============================================================
-                     KONTEN UTAMA
-                     =============================================================== --}}
-                <div class="content-body"
-                     style="font-size: 1.02rem; line-height: 1.95;">
-
-                    @if($sejarah->content)
-                        {!! $sejarah->content !!}
-                    @endif
-
                 </div>
 
                 @else
