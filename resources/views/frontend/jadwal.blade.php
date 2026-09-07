@@ -1,4 +1,4 @@
-```blade
+
 @extends('layouts.frontend')
 @section('title', 'Jadwal Rutin')
 
@@ -1406,5 +1406,4 @@
 
 </div>
 
-@endsection
-```
+
