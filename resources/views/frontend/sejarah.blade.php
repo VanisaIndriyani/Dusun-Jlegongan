@@ -118,6 +118,23 @@
 
                 </div>
 
+
+                {{-- ===============================================================
+                     KONTEN UTAMA (Deskripsi dari Admin — TANPA PARAGRAF LEAD BESAR!)
+                     =============================================================== --}}
+                <div class="content-body"
+                     style="font-size: 1.02rem;
+                            line-height: 1.95;
+                            color: #334155;">
+
+                    @if($sejarah->content)
+                        {!! $sejarah->content !!}
+                    @elseif($sejarah->description)
+                        {!! nl2br(e($sejarah->description)) !!}
+                    @endif
+
+                </div>
+
                 @else
 
                 <div class="alert alert-info rounded-4 d-flex gap-3 align-items-start">
