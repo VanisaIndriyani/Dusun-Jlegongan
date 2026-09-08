@@ -127,9 +127,7 @@
                             line-height: 1.95;
                             color: #334155;">
 
-                    @if($sejarah->content)
-                        {!! $sejarah->content !!}
-                    @elseif($sejarah->description)
+                    @if($sejarah->description)
                         {!! nl2br(e($sejarah->description)) !!}
                     @endif
 

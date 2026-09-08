@@ -498,22 +498,13 @@
                                 {{ $geografis->title }}
                             </h1>
 
-                            @if($geografis->content)
-                                @if($geografis->description)
-                                    <p class="geo-description lead mb-4 fw-semibold"
-                                       style="color: #0f766e; font-size: 1.12rem; line-height: 1.75;">
-                                        {{ $geografis->description }}
-                                    </p>
-                                @endif
-                                <div>
-                                    {!! $geografis->content !!}
-                                </div>
-                            @elseif($geografis->description)
-                                <div class="mt-2">
-                                    <p class="geo-description lead mb-0"
-                                       style="color: #0f766e; font-size: 1.12rem; line-height: 1.75;">
-                                        {{ $geografis->description }}
-                                    </p>
+                            @if($geografis->description)
+                                <div class="content-body"
+                                     style="font-size: 1.02rem;
+                                            line-height: 1.95;
+                                            color: #334155;
+                                            margin-top: 2px;">
+                                    {!! nl2br(e($geografis->description)) !!}
                                 </div>
                             @endif
 

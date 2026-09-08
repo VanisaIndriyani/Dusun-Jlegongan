@@ -976,48 +976,25 @@
 <div class="jadwal-page">
 
     {{-- =================================================
-         HERO
+         HERO — PAKAI TEMPLATE PAGE-HERO STANDAR (SAMA DENGAN SEJARAH / GEOGRAFIS / STRUKTUR)
     ================================================== --}}
-    <section class="jadwal-hero">
-
+    <section class="page-hero">
         <div class="wrap-container">
-
-            <div class="jadwal-crumb">
-
-                <a href="{{ route('home') }}">
-
-                    <i class="bi bi-house-fill me-1"></i>
-
-                    Beranda
-
-                </a>
-
+            <div class="crumb">
+                <a href="{{ route('home') }}"><i class="bi bi-house"></i> Beranda</a>
                 <i class="bi bi-chevron-right"></i>
-
-                <span class="active">
-                    Jadwal
-                </span>
-
+                <span class="active">Jadwal</span>
             </div>
-
-            <h1>
-                Jadwal Kegiatan Rutin
-            </h1>
-
-            <p>
-                Agenda kegiatan mingguan yang rutin diadakan
-                untuk seluruh warga Dusun Jlegongan.
-            </p>
-
+            <h1>Jadwal Kegiatan Rutin</h1>
+            <p>Agenda kegiatan mingguan yang rutin diadakan untuk seluruh warga Dusun Jlegongan.</p>
         </div>
-
     </section>
 
 
     {{-- =================================================
          CONTENT
     ================================================== --}}
-    <section class="jadwal-content">
+    <section class="section">
 
         <div class="wrap-container">
 
@@ -1405,5 +1382,6 @@
     </section>
 
 </div>
+@endsection
 
 

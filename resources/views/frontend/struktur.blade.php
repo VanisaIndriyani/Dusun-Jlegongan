@@ -116,31 +116,20 @@
                         {{ $struktur->title }}
                     </h1>
 
-                    @if($struktur->description)
-                    <p class="lead mb-0"
-                       style="color: #0f766e;
-                              font-weight: 550;
-                              font-size: 1.12rem;
-                              line-height: 1.75;">
-                        {{ $struktur->description }}
-                    </p>
-                    @else
-                    <p class="mb-0 text-muted" style="font-size: 1.05rem;">
-                        Struktur organisasi Dusun Jlegongan
-                    </p>
-                    @endif
 
                 </div>
 
 
                 {{-- ===============================================================
-                     KONTEN UTAMA (jika pakai field content)
+                     KONTEN UTAMA (Deskripsi dari Admin — SESUAI FIELD DI FORM ADMIN!)
                      =============================================================== --}}
                 <div class="content-body"
-                     style="font-size: 1.02rem; line-height: 1.95;">
+                     style="font-size: 1.02rem;
+                            line-height: 1.95;
+                            color: #334155;">
 
-                    @if($struktur->content)
-                        {!! $struktur->content !!}
+                    @if($struktur->description)
+                        {!! nl2br(e($struktur->description)) !!}
                     @endif
 
                 </div>
